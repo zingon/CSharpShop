@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CShop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CSharpShop" Height="450" Width="800">
     <Grid>
-        
+        <TabControl HorizontalAlignment="Left" Height="395" Margin="0,25,0,0" VerticalAlignment="Top" Width="792">
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0"/>
+            </TabItem>
+        </TabControl>
+        <Button Content="Administrace" Click="Admin_Open" HorizontalAlignment="Left" Margin="707,10,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

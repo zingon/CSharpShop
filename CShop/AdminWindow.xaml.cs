@@ -10,27 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CShop
 {
     /// <summary>
-    /// Interakční logika pro MainWindow.xaml
+    /// Interakční logika pro AdminWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AdminWindow : Window
     {
-        public MainWindow()
+        public AdminWindow()
         {
             InitializeComponent();
         }
-
-        private void Admin_Open(object sender, RoutedEventArgs e)
-        {
-
-            AdminWindow aw = new AdminWindow();
-            aw.Show();
-        }
-        
     }
 }
