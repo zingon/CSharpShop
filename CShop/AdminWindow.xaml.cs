@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace CShop
 {
     /// <summary>
@@ -22,6 +23,17 @@ namespace CShop
         public AdminWindow()
         {
             InitializeComponent();
+        }
+
+        private void CategoryEditClick(object sender, RoutedEventArgs e)
+        {
+            ProductCategoryEdit categoryEdit = new ProductCategoryEdit();
+            categoryEdit.Show();
+        }
+        private void ProductEditClick(object sender, RoutedEventArgs e)
+        {
+            ProductEdit productEdit = new ProductEdit();
+            productEdit.Show();
         }
     }
 }

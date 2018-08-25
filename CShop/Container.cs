@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CShop
 {
     class Container
@@ -61,7 +62,7 @@ namespace CShop
         private Container()
         {
             this.nodes = new List<BasicNode>();
-            Add<AdminWindow>("AdminWindow", new AdminWindow());
+           
         }
 
         public void Add<I>(string name, I instance)
@@ -73,10 +74,10 @@ namespace CShop
         {
             foreach (var node in nodes)
             {
-                Node<I> maine = (Node<I>)node;
+               
                 if(node.isIt(name))
                 {
-                    
+                    Node<I> maine = (Node<I>)node;
                     I instance1 = maine.Instance;
                     return instance1;
                 }

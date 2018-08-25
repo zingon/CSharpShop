@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="Administrace" Height="450" Width="800">
     <Grid>
-        
+        <TabControl HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="792">
+            <TabItem Header="Produkty"  Margin="0,0,-190,0">
+                <Grid Background="#FFE5E5E5" Margin="0,-1,0,0">
+                    <Button Content="Přidat Kategorii" HorizontalAlignment="Left" Click="CategoryEditClick"  Margin="673,0,0,0" VerticalAlignment="Top" Width="109"/>
+                    <Button Content="Přidat Produkt" HorizontalAlignment="Left" Click="ProductEditClick" Margin="564,0,0,0" VerticalAlignment="Top" Width="104"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Objednávky" Margin="192,0,-410,0">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>
