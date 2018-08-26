@@ -42,10 +42,7 @@ namespace CShop
             productEdit.Show();
         }
 
-        private void productsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+       
 
         private void EditProduct(object sender, RoutedEventArgs e)
         {

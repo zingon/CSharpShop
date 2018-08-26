@@ -5,14 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CShop"
         mc:Ignorable="d"
-        Title="CSharpShop" Height="450" Width="800">
+        Title="CSharpShop" Height="457.67" Width="796.165">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="395" Margin="0,25,0,0" VerticalAlignment="Top" Width="792">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+        <TabControl Margin="0,25,0,0">
+            <TabItem Header="Produkty">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid Margin="0,0,0,0" Name="CategoriesDatagrid" AutoGenerateColumns="False" IsReadOnly="True"  CanUserReorderColumns="False" ColumnWidth="*" SelectedItem="{Binding SelectedCategory}">
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Nazev kategorie" />
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DataGrid ItemsSource="{Binding Products}" Name="ProductsDatagrid" AutoGenerateColumns="False" IsReadOnly="True"  CanUserReorderColumns="False" ColumnWidth="200">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Name}" Header="Nazev Produktu" />
+                                        <DataGridTextColumn Binding="{Binding Description}" Header="Popis Produktu" />
+                                        <DataGridTextColumn Binding="{Binding Price}" Header="Cena Produktu" />
+                                        <DataGridTemplateColumn Header="Košík">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Click="AddToCart">Přidat do košíku</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,0"/>
+            <TabItem Header="Košík">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    <DataGrid Name="CartDatagrid" ColumnWidth="*"  AutoGenerateColumns="False" IsReadOnly="True"  CanUserReorderColumns="False" Margin="0,0,0,259">
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Nazev produktu" />
+                            <DataGridTextColumn Binding="{Binding Price}" Header="Cena za jednotku" />
+                            <DataGridTextColumn Binding="{Binding Count}" Header="Počet produktu" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox HorizontalAlignment="Left" Name="CustomersBox" Margin="82,123,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="Kdo jste:" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="21" Margin="375,124,0,0" Name="Name" TextWrapping="Wrap" Text="Jméno" VerticalAlignment="Top" Width="185"/>
+                    <TextBox HorizontalAlignment="Left" Height="21" Margin="565,123,0,0" Name="Address" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" Width="185"/>
+                    <Label Content="Nebo:" HorizontalAlignment="Left" Margin="317,122,0,0" VerticalAlignment="Top"/>
+                    <Separator Height="100" Margin="10,112,10,0" VerticalAlignment="Top"/>
+                    <Label Content="Celková cena:" FontSize="14" HorizontalAlignment="Left" Margin="466,183,0,0" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Right" Margin="0,188,10,146" TextWrapping="Wrap" Name="totalPrice" Text="0 Kč" FontSize="14" RenderTransformOrigin="0.466,-1.835" Width="203"/>
+                    <Button Content="Přepočítat" Click="RecountClick" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="75"/>
+                </Grid>
             </TabItem>
         </TabControl>
         <Button Content="Administrace" Click="Admin_Open" HorizontalAlignment="Left" Margin="707,10,0,0" VerticalAlignment="Top" Width="75"/>

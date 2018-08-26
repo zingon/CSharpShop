@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CShop.Models
 {
-    class OrderProduct : AProduct
+    class OrderProduct : Product
     {
         public int Count { get; set; }
     }

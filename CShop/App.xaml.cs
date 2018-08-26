@@ -24,6 +24,9 @@ namespace CShop
             container.Add<SQLiteConnection>("db", db);
             container.Add<Product>("manager.product", new Product(db));
             container.Add<ProductCategory>("manager.productCategory", new ProductCategory(db));
+            container.Add<Cart>("manager.cart", new Cart());
+            container.Add<StrategyManager>("manager.strategy", new StrategyManager());
+            container.Add<Order>("manager.order", new Order(db));
 
 
         }

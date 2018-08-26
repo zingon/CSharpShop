@@ -10,12 +10,15 @@ namespace CShop.Managers
 {
     class ProductCategory : IManager
     {
+        private bool tiny = true;
         private SQLiteConnection db;
 
         public ProductCategory(SQLiteConnection db)
         {
             this.db = db;
         }
+
+        public bool Tiny { get => tiny; set => tiny = value; }
 
         public void create(IModel model)
         {
@@ -42,10 +45,17 @@ namespace CShop.Managers
             SQLiteCommand command = new SQLiteCommand(sql, this.db);
             SQLiteDataReader reader = command.ExecuteReader();
 
+            
             List<Models.ProductCategory> categories = new List<Models.ProductCategory>();
             while (reader.Read())
             {
-                categories.Add(this.buildModel(reader.GetInt32(0), reader.GetString(1)));
+                Models.ProductCategory model = this.buildModel(reader.GetInt32(0), reader.GetString(1));
+                Container container = Container.Instance;
+                Managers.Product productManager = container.Get<Managers.Product>("manager.product");
+
+                model.Products = productManager.GetByCategory(model.Id);
+                categories.Add(model);
+                this.Tiny = true;
             }
             return categories;
         }
@@ -74,6 +84,7 @@ namespace CShop.Managers
             Models.ProductCategory model = new Models.ProductCategory();
             model.Id = id;
             model.Name = name;
+           
             return model;
         }
     }

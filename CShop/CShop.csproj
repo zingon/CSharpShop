@@ -90,9 +90,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\Cart.cs" />
     <Compile Include="Managers\IManager.cs" />
+    <Compile Include="Managers\Order.cs" />
     <Compile Include="Managers\Product.cs" />
     <Compile Include="Managers\ProductCategory.cs" />
+    <Compile Include="Managers\StrategyManager.cs" />
     <Compile Include="Models\AProduct.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IModel.cs" />
@@ -100,6 +103,12 @@
     <Compile Include="Models\OrderProduct.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Price\BasicStrategy.cs" />
+    <Compile Include="Price\FallStrategy.cs" />
+    <Compile Include="Price\IStrategy.cs" />
+    <Compile Include="Price\SpringStrategy.cs" />
+    <Compile Include="Price\SummerStrategy.cs" />
+    <Compile Include="Price\WinterStrategy.cs" />
     <Compile Include="ProductCategoryEdit.xaml.cs">
       <DependentUpon>ProductCategoryEdit.xaml</DependentUpon>
     </Compile>

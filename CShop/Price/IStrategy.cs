@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CShop.Models
+namespace CShop.Price
 {
-    public class Product : AProduct
+    public interface IStrategy
     {
+
+        double countPrice();
     }
 }

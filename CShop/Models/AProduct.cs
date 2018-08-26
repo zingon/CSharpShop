@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CShop.Models
 {
-    abstract class AProduct :IModel
+    public abstract class AProduct :IModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
