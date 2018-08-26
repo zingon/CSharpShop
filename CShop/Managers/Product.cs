@@ -51,7 +51,7 @@ namespace CShop.Managers
         public void update(IModel model)
         {
             Models.Product prod = (Models.Product)model;
-            string sql = "UPDATE product_category SET name=@name, description=@desc, product_category_id=@cat_id, price=@price WHERE id = @id";
+            string sql = "UPDATE product SET name = @name , description = @desc, product_category_id = @cat_id, price = @price WHERE id = @id";
             SQLiteCommand command = new SQLiteCommand(sql, this.db);
             command.Parameters.AddWithValue("@id", prod.Id);
             command.Parameters.AddWithValue("@name", prod.Name);

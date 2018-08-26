@@ -8,7 +8,7 @@
         Title="ProductEdit" Height="318.323" Width="361.506">
     <Grid>
 
-        <ComboBox Margin="10,75,10,0" VerticalAlignment="Top" Name="categories">
+        <ComboBox Margin="10,75,10,0" VerticalAlignment="Top" Name="categories" SelectedItem="{Binding CurrentCategory}" SelectedValue="{Binding CurrentCategory.ID}" SelectedValuePath="ID">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
