@@ -46,13 +46,14 @@
                     </DataGrid>
                     <ComboBox HorizontalAlignment="Left" Name="CustomersBox" Margin="82,123,0,0" VerticalAlignment="Top" Width="120"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="Kdo jste:" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="21" Margin="375,124,0,0" Name="Name" TextWrapping="Wrap" Text="Jméno" VerticalAlignment="Top" Width="185"/>
-                    <TextBox HorizontalAlignment="Left" Height="21" Margin="565,123,0,0" Name="Address" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" Width="185"/>
+                    <TextBox HorizontalAlignment="Left" Height="21" Margin="375,124,0,0" Name="CName" TextWrapping="Wrap" Text="Jméno" VerticalAlignment="Top" Width="185"/>
+                    <TextBox HorizontalAlignment="Left" Height="21" Margin="565,123,0,0" Name="CAddress" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" Width="185"/>
                     <Label Content="Nebo:" HorizontalAlignment="Left" Margin="317,122,0,0" VerticalAlignment="Top"/>
                     <Separator Height="100" Margin="10,112,10,0" VerticalAlignment="Top"/>
                     <Label Content="Celková cena:" FontSize="14" HorizontalAlignment="Left" Margin="466,183,0,0" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Right" Margin="0,188,10,146" TextWrapping="Wrap" Name="totalPrice" Text="0 Kč" FontSize="14" RenderTransformOrigin="0.466,-1.835" Width="203"/>
                     <Button Content="Přepočítat" Click="RecountClick" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Content="Objednat" Click="OrderClick" HorizontalAlignment="Left" Margin="629,225,0,0" VerticalAlignment="Top" Width="139"/>
                 </Grid>
             </TabItem>
         </TabControl>

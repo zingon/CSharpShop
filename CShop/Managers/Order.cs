@@ -19,9 +19,56 @@ namespace CShop.Managers
 
         public void create(IModel model)
         {
-            throw new NotImplementedException();
+            Models.Order ord = (Models.Order)model;
+            if(ord.Customer.Id == 0)
+            {
+                ord.Customer = createCustomer(ord.Customer);
+            }
+            string sql = "INSERT INTO order (customer_id,created) VALUES (@name,@created)";
+            SQLiteCommand command = new SQLiteCommand(sql, this.db);
+            command.Parameters.AddWithValue("@customer_id", ord.Customer.Id);
+            command.Parameters.AddWithValue("@created", ord.Created.ToString());
+            command.ExecuteNonQuery();
+
+
         }
 
+        public Models.Customer createCustomer(Models.Customer model)
+        {   
+            string sql = "INSERT INTO customer (name,address) VALUES (@name,@address)";
+            SQLiteCommand command = new SQLiteCommand(sql, this.db);
+            command.Parameters.AddWithValue("@name", model.Name);
+            command.Parameters.AddWithValue("@address", model.Address);
+            command.ExecuteNonQuery();
+
+             sql = "SELECT id FROM customer WHERE name = @name";
+            SQLiteCommand command1 = new SQLiteCommand(sql, this.db);
+            command.Parameters.AddWithValue("@name", model.Name);
+            SQLiteDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            model.Id = reader.GetInt32(0);
+
+            return model;
+        }
+        public List<Customer> GetAllCustomers()
+        {
+            string sql = "SELECT * FROM customer";
+            SQLiteCommand command = new SQLiteCommand(sql, this.db);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+
+            List<Models.Customer> customers = new List<Models.Customer>();
+            while (reader.Read())
+            {
+                Models.Customer model = new Customer();
+                model.Id = reader.GetInt32(0);
+                model.Name = reader.GetString(1);
+                model.Address = reader.GetString(2);
+                customers.Add(model);
+            }
+            return customers;
+        }
         public int CountCustomerOrders(int customer_id)
         {
             string sql = "SELECT COUNT(*) FROM order WHERE customer = @id";

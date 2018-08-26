@@ -38,6 +38,7 @@ namespace CShop
             this.orderManager = container.Get<Managers.Order>("manager.order");
             CategoriesDatagrid.ItemsSource = productCategoryManager.getAll();
             CartDatagrid.ItemsSource = cartManager.GetCartItems();
+            CustomersBox.ItemsSource = orderManager.GetAllCustomers();
         }
         internal List<Product> Details()
         {
@@ -60,6 +61,27 @@ namespace CShop
             CartDatagrid.ItemsSource = cartManager.GetCartItems();
             Recount();
         }
+        private void OrderClick(object sender, RoutedEventArgs e)
+        {
+            Models.Order order = new Models.Order();
+            Models.Customer customer = null;
+            if (CustomersBox.SelectedItem != null)
+            {
+                customer = CustomersBox.SelectedItem as Models.Customer;
+            } else
+            {
+                customer = new Models.Customer();
+                customer.Name = CName.Text;
+                customer.Address = CAddress.Text;
+            }
+            
+
+            order.Created = DateTime.Now;
+            order.Customer = customer;
+            order.Products = cartManager.GetCartItems();
+
+            orderManager.create(order);
+        }
         private void RecountClick(object sender, RoutedEventArgs e)
         {
             Recount();
@@ -69,7 +91,10 @@ namespace CShop
             Models.Customer customer = (Models.Customer)CustomersBox.SelectedItem;
             List<Models.OrderProduct> ordered = this.cartManager.GetCartItems();
             this.strategyManager.SetCartItems(ordered);
-            this.strategyManager.SetCountOrders(this.orderManager.CountCustomerOrders(customer.Id));
+            if(customer != null)
+            {
+                this.strategyManager.SetCountOrders(this.orderManager.CountCustomerOrders(customer.Id));
+            }
             Console.WriteLine(this.strategyManager.Total());
             this.totalPrice.Text = Convert.ToString(this.strategyManager.Total()) + " Kč";
 
