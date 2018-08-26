@@ -24,7 +24,7 @@ namespace CShop.Managers
             {
                 ord.Customer = createCustomer(ord.Customer);
             }
-            string sql = "INSERT INTO order (customer_id,created) VALUES (@name,@created)";
+            string sql = "INSERT INTO order (customer_id,created) VALUES (@customer_id,@created)";
             SQLiteCommand command = new SQLiteCommand(sql, this.db);
             command.Parameters.AddWithValue("@customer_id", ord.Customer.Id);
             command.Parameters.AddWithValue("@created", ord.Created.ToString());
