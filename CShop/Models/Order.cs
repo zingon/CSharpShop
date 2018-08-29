@@ -11,6 +11,7 @@ namespace CShop.Models
         public int Id { get; set; }
         public Customer Customer { get; set; }
         public DateTime Created { get; set; }
+        public string State { get; set; }
         public List<OrderProduct> Products { get; set; }
     }
 }

@@ -81,6 +81,9 @@ namespace CShop
             order.Products = cartManager.GetCartItems();
 
             orderManager.create(order);
+
+            CartDatagrid.ItemsSource = cartManager.GetCartItems();
+            Recount();
         }
         private void RecountClick(object sender, RoutedEventArgs e)
         {

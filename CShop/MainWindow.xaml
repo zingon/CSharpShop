@@ -44,7 +44,15 @@
                             <DataGridTextColumn Binding="{Binding Count}" Header="Počet produktu" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <ComboBox HorizontalAlignment="Left" Name="CustomersBox" Margin="82,123,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox HorizontalAlignment="Left" Name="CustomersBox" Margin="82,123,0,0" VerticalAlignment="Top" Width="120">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <TextBlock HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="Kdo jste:" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left" Height="21" Margin="375,124,0,0" Name="CName" TextWrapping="Wrap" Text="Jméno" VerticalAlignment="Top" Width="185"/>
                     <TextBox HorizontalAlignment="Left" Height="21" Margin="565,123,0,0" Name="CAddress" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" Width="185"/>

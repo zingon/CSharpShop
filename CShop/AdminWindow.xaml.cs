@@ -21,14 +21,18 @@ namespace CShop
     public partial class AdminWindow : Window
     {
         private Managers.Product productManager;
+        private Managers.Order orderManager;
         public AdminWindow()
         {
             InitializeComponent();
             Container container = Container.Instance;
             this.productManager = container.Get<Managers.Product>("manager.product");
-
+            this.orderManager = container.Get<Managers.Order>("manager.order");
+            
 
             productsDataGrid.ItemsSource = productManager.getAll();
+            orderDataGrid.ItemsSource = orderManager.getAll();
+
         }
 
         private void CategoryEditClick(object sender, RoutedEventArgs e)
@@ -42,7 +46,17 @@ namespace CShop
             productEdit.Show();
         }
 
-       
+        private void ChangeState(object sender, RoutedEventArgs e)
+        {
+            Models.Order model = (sender as Button).DataContext as Models.Order;
+            model.State = (sender as Button).Tag as string;
+
+            this.orderManager.update(model);
+            orderDataGrid.ItemsSource = orderManager.getAll();
+        }
+
+
+
 
         private void EditProduct(object sender, RoutedEventArgs e)
         {
